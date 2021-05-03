@@ -9,6 +9,11 @@ import { LoginComponent } from './accounts/login/login.component';
 import { SignupComponent } from './accounts/signup/signup.component';
 import { ProfileComponent } from './accounts/profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { MealTrackerItemComponent } from './home/meal-tracker-item/meal-tracker-item.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +22,17 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     LoginComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    MealTrackerItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

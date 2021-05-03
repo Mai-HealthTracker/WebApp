@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mai-health-tracker": {
+      "hosting": {
+        "mai-health": [
+          "mai-health-tracker"
+        ]
+      }
+    }
+  }
+}
