@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Breakfast } from '../model/records/breakfast';
+import { MealRecords } from '../model/records/meal-records';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +11,12 @@ import { Observable } from 'rxjs';
 export class FirebaseService {
   isLoggedIn = false
 
-  userOb: Observable<any>;
+  record: Observable<any>;
   user = localStorage.getItem('user')
   uid = JSON.parse(this.user?this.user:'{"uid":""}').uid
 
   constructor(public firebaseAuth: AngularFireAuth,public store:AngularFirestore) {
-    this.userOb = this.store.collection(`Records/${this.uid}/items`).valueChanges();
+    this.record = this.store.collection(`Records/${this.uid}/items`).valueChanges();
    }
    
   async signin(email:string, password:string){
@@ -45,6 +47,6 @@ export class FirebaseService {
   // Get meals
 
   getMeals(){
-    return this.userOb;
+    return this.record;
   }
 }

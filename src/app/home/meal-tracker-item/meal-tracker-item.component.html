@@ -1,7 +1,7 @@
 <a href="#" class="my-2 list-group-item flex-column">
   <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1">Friday</h5>
-    <p>23-Apr-2021</p>
+    <h5 class="mb-1">{{day.month_name}}</h5>
+    <p>{{day.record_id}}</p>
   </div>
   <hr />
   <b class="mb-1 text-primary"> Water </b>
@@ -10,40 +10,22 @@
     class="mx-auto col-5 px-3 by-2 py-1 bg-primary text-light d-flex align-items-center justify-content-around"
   >
     <i class="far fa-minus-square"></i>
-    7 Cups
+    {{day.water_count}} Cups
     <i class="far fa-plus-square"></i>
   </div>
+  <hr *ngIf="day.weight" />
+  <b *ngIf="day.weight" class="mb-1 text-dark"><span class="text-info"> Weight </span>: {{day.weight}} Kg</b>
   <hr />
-  <b class="mb-1 text-dark"><span class="text-info"> Weight </span>: 71 Kg</b>
-  <hr />
-  <p class="mb-1 text-primary">
-    <b>Breakfast</b>
-  </p>
-  <b class="my-1 text-info">Food</b>
-  <div class="d-flex justify-content-start flex-wrap my-3">
-          <app-item-icon *ngFor="let item of ['Burger', 'Rice', 'Soup', 'Vegetable']" [item]="item"></app-item-icon>
+  <div *ngIf="day.breakfast && (day.breakfast.foods || day.breakfast.drinks || day.breakfast.symptoms)"> 
+    <app-meal [meal]="day.breakfast" [title]="'BreakFast'"></app-meal>
   </div>
-  <b class="my-1 text-warning">Drinks</b>
-  <div class="d-flex justify-content-start flex-wrap my-3">
-    <img
-      src="../../../assets/icons and fonts/Alcohol.svg"
-      height="40px"
-      class="mx-4"
-    />
-    <img
-      src="../../../assets/icons and fonts/Coffee.svg"
-      height="40px"
-      class="mx-4"
-    />
-    <img
-      src="../../../assets/icons and fonts/Juice.svg"
-      height="40px"
-      class="mx-4"
-    />
+  <div *ngIf="day.lunch && (day.lunch.foods || day.lunch.drinks || day.lunch.symptoms)"> 
+    <app-meal [meal]="day.lunch" [title]="'Lunch'"></app-meal>
   </div>
-  <hr />
-  <b class="mb-1 text-dark"
-    ><span class="text-success"> Health </span>: Healthy</b
-  >
-  <hr />
+  <div *ngIf="day.snack && (day.snack.foods || day.snack.drinks || day.snack.symptoms)"> 
+    <app-meal [meal]="day.snack" [title]="'Snack'"></app-meal>
+  </div>
+  <div *ngIf="day.dinner && (day.dinner.foods || day.dinner.drinks || day.dinner.symptoms)"> 
+    <app-meal [meal]="day.dinner" [title]="'Dinner'"></app-meal>
+  </div>
 </a>

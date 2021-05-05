@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MealRecords } from '../model/records/meal-records';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
@@ -12,18 +13,23 @@ export class HomeComponent implements OnInit {
 
   user = localStorage.getItem('user');
   uid = JSON.parse(this.user ? this.user : '{}').uid;
+  records:MealRecords[];
 
-  constructor(private store: AngularFirestore,private firebaseService:FirebaseService) {}
-
-  ngOnInit(): void {
-    
-    this.getMeals(); 
+  constructor(
+    private store: AngularFirestore,
+    private firebaseService: FirebaseService
+  ) {
+    this.records = [];
   }
 
-  getMeals(){
-    this.firebaseService.getMeals().subscribe(items => {
-      console.log(items);
-      
-    })
+  ngOnInit(): void {
+    this.getMeals();
+  }
+
+  getMeals() {
+    this.firebaseService.getMeals().subscribe((items) => {
+      this.records = items;
+      console.log(this.records);
+    });
   }
 }

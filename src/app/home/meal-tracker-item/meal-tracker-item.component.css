@@ -5,7 +5,3 @@
 a {
     text-decoration: none;
 }
-
-.filter{
-    filter: invert(57%) sepia(74%) saturate(6975%) hue-rotate(322deg) brightness(93%) contrast(98%);;
-}

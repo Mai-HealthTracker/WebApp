@@ -1,13 +1,14 @@
 <div class="mx-4 my-3">
   <div class="text-danger d-flex">
-    <span class="badge badge-primary align-self-end">1</span>
+    <span class="mr-1 badge badge-primary align-self-end">{{item.count}}</span>
     <img
       class="filter"
-      src="../../../assets/icons and fonts/{{item}}.svg"
+      src="../../../assets/icons and fonts/{{item.name}}.svg"
       height="40px"
     />
     <!-- <i class="fas fa-times-circle text-primary align-self-start ml-1"></i> -->
   </div>
+  <p class="text-center mt-2">{{item.name}}</p>
   <!-- <div *ngIf="item == 0">
     <img
       src="../../../assets/icons and fonts/{{item}}.svg"

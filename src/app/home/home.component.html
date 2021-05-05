@@ -14,7 +14,7 @@
         <!-- <a class="text-primary mr-4">Choose Date</a> -->
       </div>
       <div class="list-group mx-3 outer-box">
-        <app-meal-tracker-item *ngFor="let item of [1]"></app-meal-tracker-item>
+        <app-meal-tracker-item *ngFor="let item of records" [day]="item"></app-meal-tracker-item>
       </div>
     </div>
     <div class="col-6">
