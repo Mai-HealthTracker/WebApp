@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { FirebaseService } from './services/firebase.service';
+import { ItemIconComponent } from './home/meal-tracker-item/item-icon/item-icon.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FirebaseService } from './services/firebase.service';
     LoginComponent,
     SignupComponent,
     ProfileComponent,
-    MealTrackerItemComponent
+    MealTrackerItemComponent,
+    ItemIconComponent
   ],
   imports: [
     BrowserModule,

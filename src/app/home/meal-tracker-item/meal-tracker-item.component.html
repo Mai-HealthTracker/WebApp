@@ -1,11 +1,49 @@
-<a href="#" class="my-2 list-group-item list-group-item-action flex-column">
+<a href="#" class="my-2 list-group-item flex-column">
   <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1">List group item heading</h5>
-    <small>3 days ago</small>
+    <h5 class="mb-1">Friday</h5>
+    <p>23-Apr-2021</p>
   </div>
-  <p class="mb-1">
-    Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
-    risus varius blandit.
+  <hr />
+  <b class="mb-1 text-primary"> Water </b>
+  <div
+    id="water-add"
+    class="mx-auto col-5 px-3 by-2 py-1 bg-primary text-light d-flex align-items-center justify-content-around"
+  >
+    <i class="far fa-minus-square"></i>
+    7 Cups
+    <i class="far fa-plus-square"></i>
+  </div>
+  <hr />
+  <b class="mb-1 text-dark"><span class="text-info"> Weight </span>: 71 Kg</b>
+  <hr />
+  <p class="mb-1 text-primary">
+    <b>Breakfast</b>
   </p>
-  <small>Donec id elit non mi porta.</small>
+  <b class="my-1 text-info">Food</b>
+  <div class="d-flex justify-content-start flex-wrap my-3">
+          <app-item-icon *ngFor="let item of ['Burger', 'Rice', 'Soup', 'Vegetable']" [item]="item"></app-item-icon>
+  </div>
+  <b class="my-1 text-warning">Drinks</b>
+  <div class="d-flex justify-content-start flex-wrap my-3">
+    <img
+      src="../../../assets/icons and fonts/Alcohol.svg"
+      height="40px"
+      class="mx-4"
+    />
+    <img
+      src="../../../assets/icons and fonts/Coffee.svg"
+      height="40px"
+      class="mx-4"
+    />
+    <img
+      src="../../../assets/icons and fonts/Juice.svg"
+      height="40px"
+      class="mx-4"
+    />
+  </div>
+  <hr />
+  <b class="mb-1 text-dark"
+    ><span class="text-success"> Health </span>: Healthy</b
+  >
+  <hr />
 </a>

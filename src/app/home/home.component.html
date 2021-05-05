@@ -4,7 +4,7 @@
     <div class="col-6">
       <div class="d-flex m-4 justify-content-between">
         <div class="d-inline-flex mx-auto">
-          <i style="font-size: 20px; margin-top: 12px;" class="fas fa-angle-left text-muted pr-3"></i>
+          <i style="font-size: 20px; margin-top: 12px;" class="fas fa-angle-left text-muted mr-3"></i>
           <div>
         <input *ngIf="editDate" type="date" name="date" id="chooseDate">        
         <h5 *ngIf="!editDate" class="mt-2">21, April, 2021</h5>
@@ -14,10 +14,12 @@
         <!-- <a class="text-primary mr-4">Choose Date</a> -->
       </div>
       <div class="list-group mx-3 outer-box">
-        <app-meal-tracker-item *ngFor="let item of [1,2,3,4,5,6,7]"></app-meal-tracker-item>
+        <app-meal-tracker-item *ngFor="let item of [1]"></app-meal-tracker-item>
       </div>
     </div>
-    <div class="col-6"></div>
+    <div class="col-6">
+      <img src="../../assets/chart.svg" class="d-block mx-auto mt-5" width="400px" alt="">
+    </div>
   </div>
 </div>
 
