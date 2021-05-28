@@ -15,6 +15,11 @@ export class HomeComponent implements OnInit {
   uid = JSON.parse(this.user ? this.user : '{}').uid;
   records:MealRecords[];
 
+  monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+  date_title = this.monthNames[new Date().getMonth()]+", "+new Date().getFullYear();  
+
   constructor(
     private store: AngularFirestore,
     private firebaseService: FirebaseService
@@ -28,7 +33,9 @@ export class HomeComponent implements OnInit {
 
   getMeals() {
     this.firebaseService.getMeals().subscribe((items) => {
-      this.records = items;
+      this.records = items.filter((ele:MealRecords) => {
+        return ele.month_name == this.monthNames[new Date().getMonth()]
+      });
       console.log(this.records);
     });
   }

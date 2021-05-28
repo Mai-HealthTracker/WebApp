@@ -1,25 +1,19 @@
 <app-navbar></app-navbar>
-<div class="container mt-5 pt-5">
+<div class="container mt-5 pt-3">
   <div class="row">
-    <div class="col-6">
-      <div class="d-flex m-4 justify-content-between">
-        <div class="d-inline-flex mx-auto">
-          <i style="font-size: 20px; margin-top: 12px;" class="fas fa-angle-left text-muted mr-3"></i>
-          <div>
+    <div class="col-12 col-md-8 mx-auto">
+      <div class="d-flex m-sm-4 justify-content-between">
         <input *ngIf="editDate" type="date" name="date" id="chooseDate">        
-        <h5 *ngIf="!editDate" class="mt-2">21, April, 2021</h5>
-        </div>
-        <i style="font-size: 20px; margin-top: 12px;" class="fas fa-angle-right text-muted pl-3"></i>
-        </div>
-        <!-- <a class="text-primary mr-4">Choose Date</a> -->
+        <h5 *ngIf="!editDate" class="mt-2"><span class="d-none d-sm-inline-flex">Records for</span> {{date_title}}</h5>
+        <input type="date" class="form-control col-6 col-sm-4" name="date" id="">
       </div>
       <div class="list-group mx-3 outer-box">
         <app-meal-tracker-item *ngFor="let item of records" [day]="item"></app-meal-tracker-item>
       </div>
     </div>
-    <div class="col-6">
+    <!-- <div class="d-none d-sm-block col-md-6">
       <img src="../../assets/chart.svg" class="d-block mx-auto mt-5" width="400px" alt="">
-    </div>
+    </div> -->
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-<a href="#" class="my-2 list-group-item flex-column">
+<a href="{{day.record_id}}" class="my-2 list-group-item flex-column">
   <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">{{day.month_name}}</h5>
     <p>{{day.record_id}}</p>
@@ -7,11 +7,11 @@
   <b class="mb-1 text-primary"> Water </b>
   <div
     id="water-add"
-    class="mx-auto col-5 px-3 by-2 py-1 bg-primary text-light d-flex align-items-center justify-content-around"
+    class="mx-auto col-5 col-sm-3 px-3 by-2 py-1 bg-primary text-light d-flex align-items-center justify-content-around"
   >
-    <i class="far fa-minus-square"></i>
+    <!-- <i class="far fa-minus-square"></i> -->
     {{day.water_count}} Cups
-    <i class="far fa-plus-square"></i>
+    <!-- <i class="far fa-plus-square"></i> -->
   </div>
   <hr *ngIf="day.weight" />
   <b *ngIf="day.weight" class="mb-1 text-dark"><span class="text-info"> Weight </span>: {{day.weight}} Kg</b>

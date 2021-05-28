@@ -17,7 +17,7 @@ export class FirebaseService {
 
   constructor(public firebaseAuth: AngularFireAuth,public store:AngularFirestore) {
     this.record = this.store.collection(`Records/${this.uid}/items`).valueChanges();
-   }
+  }
    
   async signin(email:string, password:string){
     await this.firebaseAuth.signInWithEmailAndPassword(email,password).then(res => {

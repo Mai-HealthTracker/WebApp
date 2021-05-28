@@ -28,7 +28,7 @@ import { MealComponent } from './home/meal-tracker-item/meal/meal.component';
     MealTrackerItemComponent,
     ItemIconComponent,
     MealComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

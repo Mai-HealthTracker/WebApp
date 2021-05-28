@@ -1,6 +1,15 @@
-.outer-box{
-    height: 65vh;
-    overflow-y: auto;
+@media only screen and (max-width: 768px) {
+    .outer-box{
+        height: 75vh;
+        overflow-y: auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .outer-box{
+        height: 65vh;
+        overflow-y: auto;
+    }
 }
 
 .outer-box:after {
