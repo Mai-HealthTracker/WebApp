@@ -4,12 +4,14 @@ import { LoginComponent } from './accounts/login/login.component';
 import { ProfileComponent } from './accounts/profile/profile.component';
 import { SignupComponent } from './accounts/signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { ModifyMealComponent } from './modify-meal/modify-meal.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'profile',component:ProfileComponent}
+  {path:'profile',component:ProfileComponent},
+  {path:'date/:date',component:ModifyMealComponent}
 ];
 
 @NgModule({

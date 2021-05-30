@@ -16,6 +16,8 @@ import { environment } from 'src/environments/environment';
 import { FirebaseService } from './services/firebase.service';
 import { ItemIconComponent } from './home/meal-tracker-item/item-icon/item-icon.component';
 import { MealComponent } from './home/meal-tracker-item/meal/meal.component';
+import { ModifyMealComponent } from './modify-meal/modify-meal.component';
+import { MealEditorComponent } from './modify-meal/meal-editor/meal-editor.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { MealComponent } from './home/meal-tracker-item/meal/meal.component';
     ProfileComponent,
     MealTrackerItemComponent,
     ItemIconComponent,
-    MealComponent
+    MealComponent,
+    ModifyMealComponent,
+    MealEditorComponent
     ],
   imports: [
     BrowserModule,

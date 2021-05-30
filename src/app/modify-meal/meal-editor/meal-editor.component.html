@@ -1,0 +1,74 @@
+<a class="my-2 list-group-item flex-column">
+  <div class="input-group mb-3">
+    <select class="custom-select" #mealselector (change)='onMealSelector(mealselector.value)' id="meal-selector">
+      <option value="null" selected>Choose</option>
+      <option value="water">Water</option>
+      <option value="breakfast">BreakFast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+    </select>
+  </div>
+  <hr />
+  <div *ngIf="meal == 'null'">
+    <img src="../../../assets/breakfast.svg" class="img-fluid px-5 mb-3">
+    <h5 class="text-center text-dark my-3">Select a Meal</h5>
+  </div>
+  <div *ngIf="meal == 'water'">
+    <b class="mb-1 text-primary"> Water </b>
+    <div
+      id="water-add"
+      class="
+        mx-auto
+        col-6
+        px-3
+        by-2
+        py-1
+        bg-primary
+        text-light
+        d-flex
+        align-items-center
+        justify-content-around
+      "
+    >
+      <i class="far fa-minus-square mr-3"></i>
+      {{ day.water_count }} Cups
+      <i class="far fa-plus-square ml-3"></i>
+    </div>
+  </div>
+  <div
+    *ngIf="
+      meal == 'breakfast' &&
+      day.breakfast &&
+      (day.breakfast.foods || day.breakfast.drinks || day.breakfast.symptoms)
+    "
+    >
+    <app-meal [meal]="day.breakfast" [title]="'BreakFast'"></app-meal>
+  </div>
+  <div
+    *ngIf="
+      meal == 'lunch' &&
+      day.lunch &&
+      (day.lunch.foods || day.lunch.drinks || day.lunch.symptoms)
+    "
+  >
+    <app-meal [meal]="day.lunch" [title]="'Lunch'"></app-meal>
+  </div>
+  <div
+    *ngIf="
+      meal == 'snack' &&
+      day.snack &&
+      (day.snack.foods || day.snack.drinks || day.snack.symptoms)
+    "
+  >
+    <app-meal [meal]="day.snack" [title]="'Snack'"></app-meal>
+  </div>
+  <div
+    *ngIf="
+      meal == 'dinner' &&
+      day.dinner &&
+      (day.dinner.foods || day.dinner.drinks || day.dinner.symptoms)
+    "
+  >
+    <app-meal [meal]="day.dinner" [title]="'Dinner'"></app-meal>
+  </div>
+</a>

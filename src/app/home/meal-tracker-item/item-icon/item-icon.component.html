@@ -1,5 +1,5 @@
 <div class="mx-4 my-3">
-  <div class="text-danger d-flex">
+  <div class="text-danger d-flex" (click)="incrementItem(item.name)">
     <span class="mr-1 badge badge-primary align-self-end">{{item.count}}</span>
     <img
       class="filter"
