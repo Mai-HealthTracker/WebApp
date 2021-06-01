@@ -17,9 +17,6 @@ export class MealEditorComponent implements OnInit {
   }
 
   onMealSelector(meal:string){
-    this.meal = meal;
-    // for ()
-    console.log(this.day.dinner.foods);
-    
+    this.meal = meal;    
   }
 }

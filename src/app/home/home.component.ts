@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   getMeals() {
     this.firebaseService.getMeals().subscribe((items) => {
       this.records = items.filter((ele:MealRecords) => {
-        return ele.month_name == this.monthNames[new Date().getMonth()]
+        return ele.month_name == this.monthNames[new Date().getMonth()-1]
       });
       console.log(this.records);
     });

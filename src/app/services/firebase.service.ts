@@ -7,6 +7,7 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Breakfast } from '../model/records/breakfast';
+import { Icon } from '../model/records/icon';
 import { MealRecords } from '../model/records/meal-records';
 
 @Injectable({
@@ -88,9 +89,15 @@ export class FirebaseService {
                         return ele.name;
                     })
                     .indexOf(name);
-                this.updatedData[indexOfTheDay].breakfast.foods[
-                    indexOfTheFood
-                ].count += 1;
+                console.log("index of oats",indexOfTheFood);
+                
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].breakfast.foods.push(JSON.parse(JSON.stringify(new Icon(name, 'food', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].breakfast.foods[
+                        indexOfTheFood
+                    ].count += 1;
+                }
             } else if (itemType == 'drink') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].breakfast.drinks
                     .map((ele) => {
@@ -98,97 +105,139 @@ export class FirebaseService {
                     })
                     .indexOf(name);
                 console.log('inside drinks');
-                this.updatedData[indexOfTheDay].breakfast.drinks[
-                    indexOfTheFood
-                ].count += 1;
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].breakfast.drinks.push(JSON.parse(JSON.stringify(new Icon(name, 'drink', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].breakfast.drinks[
+                        indexOfTheFood
+                    ].count += 1;
+                }
             } else if (itemType == 'symptom') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].breakfast.symptoms
                     .map((ele) => {
                         return ele.name;
                     })
                     .indexOf(name);
-                this.updatedData[indexOfTheDay].breakfast.symptoms[
-                    indexOfTheFood
-                ].count += 1;
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].breakfast.symptoms.push(JSON.parse(JSON.stringify(new Icon(name, 'symptom', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].breakfast.symptoms[
+                        indexOfTheFood
+                    ].count += 1;
+                }
             }
         } else if (meal == 'Lunch') {
-        
+
             if (itemType == 'food') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].lunch.foods
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].lunch.foods[indexOfTheFood].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].lunch.foods.push(JSON.parse(JSON.stringify(new Icon(name, 'food', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].lunch.foods[indexOfTheFood].count += 1;
+                }
             } else if (itemType == 'drink') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].lunch.drinks
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].lunch.drinks[indexOfTheFood].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].lunch.drinks.push(JSON.parse(JSON.stringify(new Icon(name, 'drink', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].lunch.drinks[indexOfTheFood].count += 1;
+                }
             } else if (itemType == 'symptom') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].lunch.symptoms
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].lunch.symptoms[
-                    indexOfTheFood
-                ].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].lunch.symptoms.push(JSON.parse(JSON.stringify(new Icon(name, 'symptom', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].lunch.symptoms[
+                        indexOfTheFood
+                    ].count += 1;
+                }
             }
         } else if (meal == 'Dinner') {
             if (itemType == 'food') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].dinner.foods
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].dinner.foods[indexOfTheFood].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].dinner.foods.push(JSON.parse(JSON.stringify(new Icon(name, 'food', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].dinner.foods[indexOfTheFood].count += 1;
+                }
             } else if (itemType == 'drink') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].dinner.drinks
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].dinner.drinks[
-                    indexOfTheFood
-                ].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].dinner.drinks.push(JSON.parse(JSON.stringify(new Icon(name, 'drink', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].dinner.drinks[
+                        indexOfTheFood
+                    ].count += 1;
+                }
             } else if (itemType == 'symptom') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].dinner.symptoms
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].dinner.symptoms[
-                    indexOfTheFood
-                ].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].dinner.symptoms.push(JSON.parse(JSON.stringify(new Icon(name, 'symptom', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].dinner.symptoms[
+                        indexOfTheFood
+                    ].count += 1;
+                }
             }
         } else if (meal == 'Snack') {
-            
+
             if (itemType == 'food') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].snack.foods
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].snack.foods[indexOfTheFood].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].snack.foods.push(JSON.parse(JSON.stringify(new Icon(name, 'food', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].snack.foods[indexOfTheFood].count += 1;
+                }
             } else if (itemType == 'drink') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].snack.drinks
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].snack.drinks[indexOfTheFood].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].snack.drinks.push(JSON.parse(JSON.stringify(new Icon(name, 'drink', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].snack.drinks[indexOfTheFood].count += 1;
+                }
             } else if (itemType == 'symptom') {
                 indexOfTheFood = this.updatedData[indexOfTheDay].snack.symptoms
-                .map((ele) => {
-                    return ele.name;
-                })
-                .indexOf(name);
-                this.updatedData[indexOfTheDay].snack.symptoms[
-                    indexOfTheFood
-                ].count += 1;
+                    .map((ele) => {
+                        return ele.name;
+                    })
+                    .indexOf(name);
+                if (indexOfTheFood == -1) {
+                    this.updatedData[indexOfTheDay].snack.symptoms.push(JSON.parse(JSON.stringify(new Icon(name, 'symptom', true, 1))));
+                } else {
+                    this.updatedData[indexOfTheDay].snack.symptoms[indexOfTheFood].count += 1;
+                }
             }
         }
         console.log('after update', this.updatedData[indexOfTheDay]);

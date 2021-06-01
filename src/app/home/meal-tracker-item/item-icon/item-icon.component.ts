@@ -10,6 +10,8 @@ export class ItemIconComponent implements OnInit {
 
   @Input() item:any;
   @Input() meal:any;
+  @Input() date:any;
+  
   constructor(private firebaseService:FirebaseService) { }
 
   ngOnInit(): void {
