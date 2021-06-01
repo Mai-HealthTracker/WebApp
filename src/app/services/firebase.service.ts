@@ -89,8 +89,8 @@ export class FirebaseService {
                         return ele.name;
                     })
                     .indexOf(name);
-                console.log("index of oats",indexOfTheFood);
-                
+                console.log("index of oats", indexOfTheFood);
+
                 if (indexOfTheFood == -1) {
                     this.updatedData[indexOfTheDay].breakfast.foods.push(JSON.parse(JSON.stringify(new Icon(name, 'food', true, 1))));
                 } else {
@@ -238,6 +238,88 @@ export class FirebaseService {
                 } else {
                     this.updatedData[indexOfTheDay].snack.symptoms[indexOfTheFood].count += 1;
                 }
+            }
+        }
+        console.log('after update', this.updatedData[indexOfTheDay]);
+
+        this.store
+            .collection(`Records/${this.uid}/items`)
+            .doc(date)
+            .update(this.updatedData[indexOfTheDay]);
+    }
+
+    cancelMeal(date: string, meal: string, itemType: string, name: string) {
+        // write remove fil
+        console.log("cancel meal");
+        
+        let indexOfTheDay = this.updatedData
+            .map((ele: MealRecords) => {
+                return ele.record_id;
+            })
+            .indexOf(date);
+
+        var indexOfTheFood: number = 0;
+        console.log('item type ', itemType, ' meal ', meal);
+
+        if (meal == 'BreakFast') {
+            console.log('inside breakfast');
+            if (itemType == 'food') {
+                console.log('inside foods');
+                this.updatedData[indexOfTheDay].breakfast.foods = this.updatedData[indexOfTheDay].breakfast.foods.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'drink') {
+                this.updatedData[indexOfTheDay].breakfast.drinks = this.updatedData[indexOfTheDay].breakfast.drinks.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'symptom') {
+                this.updatedData[indexOfTheDay].breakfast.symptoms = this.updatedData[indexOfTheDay].breakfast.symptoms.filter((ele) => {
+                    return ele.name != name;
+                })
+            }
+        } else if (meal == 'Lunch') {
+
+            if (itemType == 'food') {
+                this.updatedData[indexOfTheDay].lunch.foods = this.updatedData[indexOfTheDay].lunch.foods.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'drink') {
+                this.updatedData[indexOfTheDay].lunch.drinks = this.updatedData[indexOfTheDay].lunch.drinks.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'symptom') {
+                this.updatedData[indexOfTheDay].lunch.symptoms = this.updatedData[indexOfTheDay].lunch.symptoms.filter((ele) => {
+                    return ele.name != name;
+                })
+            }
+        } else if (meal == 'Dinner') {
+            if (itemType == 'food') {
+                this.updatedData[indexOfTheDay].dinner.foods = this.updatedData[indexOfTheDay].dinner.foods.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'drink') {
+                this.updatedData[indexOfTheDay].dinner.drinks = this.updatedData[indexOfTheDay].dinner.drinks.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'symptom') {
+                this.updatedData[indexOfTheDay].dinner.symptoms = this.updatedData[indexOfTheDay].dinner.symptoms.filter((ele) => {
+                    return ele.name != name;
+                })
+            }
+        } else if (meal == 'Snack') {
+
+            if (itemType == 'food') {
+                this.updatedData[indexOfTheDay].snack.foods = this.updatedData[indexOfTheDay].snack.foods.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'drink') {
+                this.updatedData[indexOfTheDay].snack.drinks = this.updatedData[indexOfTheDay].snack.drinks.filter((ele) => {
+                    return ele.name != name;
+                })
+            } else if (itemType == 'symptom') {
+                this.updatedData[indexOfTheDay].snack.symptoms = this.updatedData[indexOfTheDay].snack.symptoms.filter((ele) => {
+                    return ele.name != name;
+                })
             }
         }
         console.log('after update', this.updatedData[indexOfTheDay]);

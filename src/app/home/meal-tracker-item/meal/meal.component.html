@@ -4,19 +4,19 @@
 <div *ngIf="meal.foods.length">
   <b class="mt-1 text-info">Food</b>
   <div class="d-flex justify-content-start flex-wrap my-3">
-    <app-item-icon *ngFor="let item of meal.foods" [item]="item" [meal]=title [date]=date></app-item-icon>
+    <app-item-icon *ngFor="let item of meal.foods" [item]="item" [canEdit]="canEdit" [meal]=title [date]=date></app-item-icon>
   </div>
 </div>
 <div *ngIf="meal.drinks.length">
   <b class="mt-1 text-warning">Drinks</b>
   <div class="d-flex justify-content-start flex-wrap my-3">
-    <app-item-icon *ngFor="let item of meal.drinks" [item]="item" [meal]=title [date]=date></app-item-icon>
+    <app-item-icon *ngFor="let item of meal.drinks" [item]="item" [canEdit]="canEdit"  [meal]=title [date]=date></app-item-icon>
   </div>
 </div>
 <div *ngIf="meal.symptoms.length">
   <b class="mt-1 text-Primary">Symptoms</b>
   <div class="d-flex justify-content-start flex-wrap my-3">
-    <app-item-icon *ngFor="let item of meal.symptoms" [item]="item" [meal]=title [date]=date></app-item-icon>
+    <app-item-icon *ngFor="let item of meal.symptoms" [item]="item" [canEdit]="canEdit"  [meal]=title [date]=date></app-item-icon>
   </div>
   <hr />
 </div>

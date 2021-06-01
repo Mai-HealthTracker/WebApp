@@ -9,6 +9,7 @@ import { MealRecords } from 'src/app/model/records/meal-records';
 export class MealEditorComponent implements OnInit {
   @Input() day:MealRecords = new MealRecords();
   @Input() meal:string = "null";
+  canEdit:boolean = true;
   
   constructor() { }
 

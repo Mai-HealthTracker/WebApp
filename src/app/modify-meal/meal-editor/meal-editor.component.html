@@ -42,7 +42,7 @@
       (day.breakfast.foods || day.breakfast.drinks || day.breakfast.symptoms)
     "
     >
-    <app-meal [meal]="day.breakfast" [title]="'BreakFast'" [date]="day.record_id"></app-meal>
+    <app-meal [canEdit]="true" [meal]="day.breakfast" [title]="'BreakFast'" [date]="day.record_id"></app-meal>
   </div>
   <div
     *ngIf="
@@ -51,7 +51,7 @@
       (day.lunch.foods || day.lunch.drinks || day.lunch.symptoms)
     "
   >
-    <app-meal [meal]="day.lunch" [title]="'Lunch'" [date]="day.record_id"></app-meal>
+    <app-meal [canEdit]="true" [meal]="day.lunch" [title]="'Lunch'" [date]="day.record_id"></app-meal>
   </div>
   <div
     *ngIf="
@@ -60,7 +60,7 @@
       (day.snack.foods || day.snack.drinks || day.snack.symptoms)
     "
   >
-    <app-meal [meal]="day.snack" [title]="'Snack'" [date]="day.record_id"></app-meal>
+    <app-meal [canEdit]="true" [meal]="day.snack" [title]="'Snack'" [date]="day.record_id"></app-meal>
   </div>
   <div
     *ngIf="
@@ -69,6 +69,6 @@
       (day.dinner.foods || day.dinner.drinks || day.dinner.symptoms)
     "
   >
-    <app-meal [meal]="day.dinner" [title]="'Dinner'" [date]="day.record_id"></app-meal>
+    <app-meal [canEdit]="true" [meal]="day.dinner" [title]="'Dinner'" [date]="day.record_id"></app-meal>
   </div>
 </a>

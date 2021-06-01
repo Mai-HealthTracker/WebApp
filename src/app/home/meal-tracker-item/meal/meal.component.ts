@@ -11,6 +11,7 @@ export class MealComponent implements OnInit {
   @Input() meal:any;
   @Input() title:any;
   @Input() date:any;
+  @Input() canEdit:any;
 
   constructor() { }
 

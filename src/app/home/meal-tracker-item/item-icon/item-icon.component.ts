@@ -11,6 +11,7 @@ export class ItemIconComponent implements OnInit {
   @Input() item:any;
   @Input() meal:any;
   @Input() date:any;
+  @Input() canEdit:any;
   
   constructor(private firebaseService:FirebaseService) { }
 
@@ -20,6 +21,11 @@ export class ItemIconComponent implements OnInit {
   incrementItem(nameOfitem:string){
     console.log("name item",nameOfitem, this.item,this.meal);
     this.firebaseService.updateMealCount("05-05-2021",this.meal,this.item.tag,nameOfitem);
+  }
+
+  cancelItem(nameOfitem:string){
+    console.log("cancel controller");
+    this.firebaseService.cancelMeal("05-05-2021",this.meal,this.item.tag,nameOfitem);
   }
 
 }
