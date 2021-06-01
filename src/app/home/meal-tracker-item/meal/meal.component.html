@@ -1,27 +1,86 @@
 <p class="mb-2 text-primary">
-  <b>{{title}}</b>
+  <b>{{ title }}</b>
 </p>
-<div *ngIf="meal.foods.length">
-  <b class="mt-1 text-info">Food</b>
-  <div class="d-flex justify-content-start flex-wrap my-3">
-    <app-item-icon *ngFor="let item of meal.foods" [item]="item" [canEdit]="canEdit" [meal]=title [date]=date></app-item-icon>
+
+<!-- normal meal -->
+<div *ngIf="!canEdit">
+    <b class="mt-1 text-info">Food</b>
+    <div class="d-flex justify-content-start flex-wrap my-3">
+      <app-item-icon
+        *ngFor="let item of meal.foods"
+        [item]="item"
+        [canEdit]="canEdit"
+        [meal]="title"
+        [date]="date"
+      ></app-item-icon>
+      <p *ngIf="!meal.foods.length">No Foods Selected</p>
+    </div>
+    <b class="mt-1 text-warning">Drinks</b>
+    <div class="d-flex justify-content-start flex-wrap my-3">
+      <app-item-icon
+        *ngFor="let item of meal.drinks"
+        [item]="item"
+        [canEdit]="canEdit"
+        [meal]="title"
+        [date]="date"
+      ></app-item-icon>
+      <p *ngIf="!meal.drinks.length">No Drinks Selected</p>
+    </div>
+    <b class="mt-1 text-Primary">Symptoms</b>
+    <div class="d-flex justify-content-start flex-wrap my-3">
+      <app-item-icon
+        *ngFor="let item of meal.symptoms"
+        [item]="item"
+        [canEdit]="canEdit"
+        [meal]="title"
+        [date]="date"
+      ></app-item-icon>
+      <p *ngIf="!meal.symptoms.length">No Symptoms Selected</p>
+    <hr />
   </div>
+  <b class="mb-1 text-dark">
+    <!-- TODO Pending -->
+    <span class="text-success"> Health </span>: Healthy
+  </b>
 </div>
-<div *ngIf="meal.drinks.length">
-  <b class="mt-1 text-warning">Drinks</b>
-  <div class="d-flex justify-content-start flex-wrap my-3">
-    <app-item-icon *ngFor="let item of meal.drinks" [item]="item" [canEdit]="canEdit"  [meal]=title [date]=date></app-item-icon>
-  </div>
+
+<!-- can edit -->
+
+<div *ngIf="canEdit">
+    <b class="mt-1 text-info">Food</b>
+    <div class="d-flex justify-content-start flex-wrap my-3">
+      <app-item-icon
+        *ngFor="let item of food"
+        [item]="item"
+        [canEdit]="canEdit"
+        [meal]="title"
+        [date]="date"
+      ></app-item-icon>
+    </div>
+    <b class="mt-1 text-warning">Drinks</b>
+    <div class="d-flex justify-content-start flex-wrap my-3">
+      <app-item-icon
+        *ngFor="let item of drink"
+        [item]="item"
+        [canEdit]="canEdit"
+        [meal]="title"
+        [date]="date"
+      ></app-item-icon>
+    </div>
+    <b class="mt-1 text-Primary">Symptoms</b>
+    <div class="d-flex justify-content-start flex-wrap my-3">
+      <app-item-icon
+        *ngFor="let item of symptom"
+        [item]="item"
+        [canEdit]="canEdit"
+        [meal]="title"
+        [date]="date"
+      ></app-item-icon>
+    </div>
+    <hr />
+  <b class="mb-1 text-dark">
+    <!-- TODO Pending -->
+    <span class="text-success"> Health </span>: Healthy
+  </b>
 </div>
-<div *ngIf="meal.symptoms.length">
-  <b class="mt-1 text-Primary">Symptoms</b>
-  <div class="d-flex justify-content-start flex-wrap my-3">
-    <app-item-icon *ngFor="let item of meal.symptoms" [item]="item" [canEdit]="canEdit"  [meal]=title [date]=date></app-item-icon>
-  </div>
-  <hr />
-</div>
-<b class="mb-1 text-dark">
-  <!-- TODO Pending -->
-  <span class="text-success"> Health </span>: Healthy
-</b>
 <hr />

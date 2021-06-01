@@ -1,15 +1,40 @@
-<div class="mx-4 my-3">
-  <div class="text-danger d-flex">
+<div *ngIf="canEdit && item.count > 0" class="mx-2 my-3">
+  <div
+    class="highlight p-2 text-danger d-flex"
+  >
     <span class="mr-1 badge badge-primary align-self-end">{{
       item.count
     }}</span>
     <img
       (click)="incrementItem(item.name)"
-      class="filter my-1 mt-2"
+      class="my-1 mt-2"
       src="../../../assets/icons and fonts/{{ item.name }}.svg"
       height="40px"
     />
-    <span (click)="cancelItem(item.name)" *ngIf="canEdit" class="ml-1 badge badge-primary align-self-start"
+    <span
+      (click)="cancelItem(item.name)"
+      *ngIf="canEdit"
+      class="ml-1 badge badge-primary align-self-start"
+      ><i class="fas fa-times"></i
+    ></span>
+  </div>
+  <p class="text-center mt-2">{{ item.name }}</p>
+</div>
+<div *ngIf="!canEdit || item.count == 0" class="mx-2 my-3"> 
+  <div class="no-highlight p-2 text-danger d-flex">
+    <span class="mr-1 badge badge-primary align-self-end">{{
+      item.count
+    }}</span>
+    <img
+      (click)="incrementItem(item.name)"
+      class="my-1 mt-2"
+      src="../../../assets/icons and fonts/{{ item.name }}.svg"
+      height="40px"
+    />
+    <span
+      (click)="cancelItem(item.name)"
+      *ngIf="canEdit"
+      class="ml-1 badge badge-primary align-self-start"
       ><i class="fas fa-times"></i
     ></span>
   </div>

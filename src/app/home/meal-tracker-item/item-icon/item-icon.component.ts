@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Icon } from 'src/app/model/records/icon';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -8,24 +9,27 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class ItemIconComponent implements OnInit {
 
-  @Input() item:any;
-  @Input() meal:any;
-  @Input() date:any;
-  @Input() canEdit:any;
+  @Input() item: any;
+  @Input() meal: any;
+  @Input() date: any;
+  @Input() canEdit: any;
+
   
-  constructor(private firebaseService:FirebaseService) { }
+
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+    
   }
 
-  incrementItem(nameOfitem:string){
-    console.log("name item",nameOfitem, this.item,this.meal);
-    this.firebaseService.updateMealCount("05-05-2021",this.meal,this.item.tag,nameOfitem);
+  incrementItem(nameOfitem: string) {
+    console.log("name item", nameOfitem, this.item, this.meal);
+    this.firebaseService.updateMealCount(this.date, this.meal, this.item.tag, nameOfitem);
   }
 
-  cancelItem(nameOfitem:string){
+  cancelItem(nameOfitem: string) {
     console.log("cancel controller");
-    this.firebaseService.cancelMeal("05-05-2021",this.meal,this.item.tag,nameOfitem);
+    this.firebaseService.cancelMeal(this.date, this.meal, this.item.tag, nameOfitem);
   }
 
 }
