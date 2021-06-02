@@ -18,18 +18,13 @@
       <a routerLink="" class="navbar-brand">Mai Health</a>
       <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a id="predictors" *ngIf="navBtnsVisible" class="nav-link"
+          <a routerLink="" id="Records" *ngIf="navBtnsVisible" class="nav-link"
+            ><i class="fas fa-chart-line pr-1"></i>Records</a
+          >
+        </li>
+        <li class="nav-item">
+          <a routerLink="/predict" id="predictors" *ngIf="navBtnsVisible" class="nav-link"
             ><i class="fas fa-brain pr-1"></i>Predictors</a
-          >
-        </li>
-        <li class="nav-item">
-          <a id="stats" *ngIf="navBtnsVisible" class="nav-link"
-            ><i class="fas fa-chart-line pr-1"></i>My Stats</a
-          >
-        </li>
-        <li class="nav-item">
-          <a id="profile" *ngIf="navBtnsVisible" class="nav-link"
-            ><i class="fas fa-user pr-1"></i>Profile</a
           >
         </li>
       </ul>

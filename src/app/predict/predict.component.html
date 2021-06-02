@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<div class="container col-8" style="margin-top: 90px;">
+    <div id="product_show" class="container mt-3 d-flex flex-wrap justify-content-around mb-5">
+        <div *ngFor="let predict of predictors" class="card m-3 click" style="width: 13rem; height: 13rem;border-radius: 5px;">
+            <a href="{{predict.url}}" target="_blank" class="d-block p-3">
+                <img class="card-img-top d-block mx-auto" src="{{predict.image}}" alt="Card image cap"
+                    style="border-radius: 5px;height: 7rem;width: 7rem;">
+                <div class="card-body">
+                    <h5 class="card-title click text-center">{{predict.name}}</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

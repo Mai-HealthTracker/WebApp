@@ -20,6 +20,7 @@ export class FirebaseService {
     isLoggedIn = false;
 
     record: Observable<any>;
+    predictor: Observable<any>;
     updatedData: MealRecords[] = [];
     user = localStorage.getItem('user');
     uid = JSON.parse(this.user ? this.user : '{"uid":""}').uid;
@@ -35,6 +36,9 @@ export class FirebaseService {
             this.updatedData = data;
             console.log('updated data object model created', this.updatedData);
         });
+        this.predictor = this.store
+            .collection(`Predictors`)
+            .valueChanges();
     }
 
     async signin(email: string, password: string) {
@@ -254,7 +258,7 @@ export class FirebaseService {
     cancelMeal(date: string, meal: string, itemType: string, name: string) {
         // write remove fil
         console.log("cancel meal");
-        
+
         let indexOfTheDay = this.updatedData
             .map((ele: MealRecords) => {
                 return ele.record_id;
@@ -333,30 +337,30 @@ export class FirebaseService {
             .update(this.updatedData[indexOfTheDay]);
     }
 
-    updateWater(increment:number,date:string){
-       console.log("dataa ",this.updatedData);
-       let indexOfTheDay = this.updatedData
+    updateWater(increment: number, date: string) {
+        console.log("dataa ", this.updatedData);
+        let indexOfTheDay = this.updatedData
             .map((ele: MealRecords) => {
                 return ele.record_id;
             })
             .indexOf(date);
         this.updatedData[indexOfTheDay].water_count += increment;
         this.store
-        .collection(`Records/${this.uid}/items`)
-        .doc(date)
-        .update(this.updatedData[indexOfTheDay]);
+            .collection(`Records/${this.uid}/items`)
+            .doc(date)
+            .update(this.updatedData[indexOfTheDay]);
     }
-    initializeRecord(date:string){
+    initializeRecord(date: string) {
         let monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
+            "July", "August", "September", "October", "November", "December"
+        ];
         let thisDaysRecord = new MealRecords();
         thisDaysRecord.record_id = date;
         thisDaysRecord.water_count = 0;
         thisDaysRecord.day = parseInt(date.split('-')[0])
         thisDaysRecord.month = parseInt(date.split('-')[1])
         thisDaysRecord.year = parseInt(date.split('-')[2])
-        thisDaysRecord.month_name = monthNames[parseInt(date.split('-')[1])-1]
+        thisDaysRecord.month_name = monthNames[parseInt(date.split('-')[1]) - 1]
         thisDaysRecord.breakfast = new Breakfast();
         thisDaysRecord.breakfast.foods = [];
         thisDaysRecord.breakfast.drinks = [];
@@ -382,11 +386,15 @@ export class FirebaseService {
         thisDaysRecord.weight = 0;
 
         this.store
-        .collection(`Records/${this.uid}/items`)
-        .doc(date)
-        .set(JSON.parse(JSON.stringify(thisDaysRecord)));
-        
-        console.log("see this",thisDaysRecord);
-        
+            .collection(`Records/${this.uid}/items`)
+            .doc(date)
+            .set(JSON.parse(JSON.stringify(thisDaysRecord)));
+
+        console.log("see this", thisDaysRecord);
+
+    }
+
+    getPredictors() {
+        return this.predictor;
     }
 }

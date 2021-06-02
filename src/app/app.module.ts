@@ -18,6 +18,7 @@ import { ItemIconComponent } from './home/meal-tracker-item/item-icon/item-icon.
 import { MealComponent } from './home/meal-tracker-item/meal/meal.component';
 import { ModifyMealComponent } from './modify-meal/modify-meal.component';
 import { MealEditorComponent } from './modify-meal/meal-editor/meal-editor.component';
+import { PredictComponent } from './predict/predict.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MealEditorComponent } from './modify-meal/meal-editor/meal-editor.compo
     ItemIconComponent,
     MealComponent,
     ModifyMealComponent,
-    MealEditorComponent
+    MealEditorComponent,
+    PredictComponent
     ],
   imports: [
     BrowserModule,
