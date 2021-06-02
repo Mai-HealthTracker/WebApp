@@ -7,8 +7,11 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Breakfast } from '../model/records/breakfast';
+import { Dinner } from '../model/records/dinner';
 import { Icon } from '../model/records/icon';
+import { Lunch } from '../model/records/lunch';
 import { MealRecords } from '../model/records/meal-records';
+import { Snack } from '../model/records/snack';
 
 @Injectable({
     providedIn: 'root',
@@ -328,5 +331,62 @@ export class FirebaseService {
             .collection(`Records/${this.uid}/items`)
             .doc(date)
             .update(this.updatedData[indexOfTheDay]);
+    }
+
+    updateWater(increment:number,date:string){
+       console.log("dataa ",this.updatedData);
+       let indexOfTheDay = this.updatedData
+            .map((ele: MealRecords) => {
+                return ele.record_id;
+            })
+            .indexOf(date);
+        this.updatedData[indexOfTheDay].water_count += increment;
+        this.store
+        .collection(`Records/${this.uid}/items`)
+        .doc(date)
+        .update(this.updatedData[indexOfTheDay]);
+    }
+    initializeRecord(date:string){
+        let monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+        let thisDaysRecord = new MealRecords();
+        thisDaysRecord.record_id = date;
+        thisDaysRecord.water_count = 0;
+        thisDaysRecord.day = parseInt(date.split('-')[0])
+        thisDaysRecord.month = parseInt(date.split('-')[1])
+        thisDaysRecord.year = parseInt(date.split('-')[2])
+        thisDaysRecord.month_name = monthNames[parseInt(date.split('-')[1])-1]
+        thisDaysRecord.breakfast = new Breakfast();
+        thisDaysRecord.breakfast.foods = [];
+        thisDaysRecord.breakfast.drinks = [];
+        thisDaysRecord.breakfast.symptoms = [];
+        thisDaysRecord.breakfast.health = 5;
+        thisDaysRecord.lunch = new Lunch();
+        thisDaysRecord.lunch.foods = [];
+        thisDaysRecord.lunch.drinks = [];
+        thisDaysRecord.lunch.symptoms = [];
+        thisDaysRecord.lunch.health = 5;
+        thisDaysRecord.snack = new Snack();
+        thisDaysRecord.snack.foods = [];
+        thisDaysRecord.snack.drinks = [];
+        thisDaysRecord.snack.symptoms = [];
+        thisDaysRecord.snack.health = 5;
+        thisDaysRecord.dinner = new Dinner();
+        thisDaysRecord.dinner.foods = [];
+        thisDaysRecord.dinner.drinks = [];
+        thisDaysRecord.dinner.symptoms = [];
+        thisDaysRecord.dinner.health = 5;
+        thisDaysRecord.notes = "";
+        thisDaysRecord.user_id = this.getUid();
+        thisDaysRecord.weight = 0;
+
+        this.store
+        .collection(`Records/${this.uid}/items`)
+        .doc(date)
+        .set(JSON.parse(JSON.stringify(thisDaysRecord)));
+        
+        console.log("see this",thisDaysRecord);
+        
     }
 }

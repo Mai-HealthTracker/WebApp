@@ -29,29 +29,50 @@ export class MealComponent implements OnInit {
 		this.drink_names = ['Water', 'Tea', 'Coffee', 'Soda', 'Milk', 'Juice', 'Energy Drink', 'Alcohol'];
 		this.symptom_names = ['Reflux', 'Gas', 'Rash', 'Vomiting', 'Diarrhea', 'Belly Pain', 'Headache', 'Fatigue', 'Constipation'];
 		for (let food_name of this.food_names) {
-			let index = this.meal.foods.map((ele: any) => {
-				return ele.name;
-			}).indexOf(food_name);
+			var index:number;
+			if (this.meal){
+				index = this.meal.foods.map((ele: any) => {
+					return ele.name;
+				}).indexOf(food_name);
+			} else {
+				index = -1;
+			}
+			
 			if (index == -1) {
+				console.log("inserting in index -1");
 				this.food.push(new Icon(food_name, 'food', true, 0));
 			} else {
 				this.food.push(new Icon(food_name, 'food', true, this.meal.foods[index].count));
 			}
 		}
 		for (let drink_name of this.drink_names) {
-			let index = this.meal.drinks.map((ele: any) => {
-				return ele.name;
-			}).indexOf(drink_name);
+			
+			var index:number;
+			if (this.meal){
+				index = this.meal.drinks.map((ele: any) => {
+					return ele.name;
+				}).indexOf(drink_name);
+			} else {
+				index = -1;
+			}
+			
 			if (index == -1) {
+				console.log("inserting drink in index -1");
 				this.drink.push(new Icon(drink_name, 'drink', true, 0));
 			} else {
 				this.drink.push(new Icon(drink_name, 'drink', true, this.meal.drinks[index].count));
 			}
 		}
 		for (let food_name of this.symptom_names) {
-			let index = this.meal.symptoms.map((ele: any) => {
-				return ele.name;
-			}).indexOf(food_name);
+			var index:number;
+			if (this.meal){
+				index = this.meal.symptoms.map((ele: any) => {
+					return ele.name;
+				}).indexOf(food_name);
+			} else {
+				index = -1;
+			}
+			
 			if (index == -1) {
 				this.symptom.push(new Icon(food_name, 'symptom', true, 0));
 			} else {
@@ -59,6 +80,8 @@ export class MealComponent implements OnInit {
 			}
 		}
 		console.log("meal", this.meal);
+		console.log("foods",this.food,"drinks",this.drink);
+
 	}
 
 	ngOnChanges(){
@@ -67,19 +90,33 @@ export class MealComponent implements OnInit {
 		this.drink = [];
 		this.symptom = [];
 		for (let food_name of this.food_names) {
-			let index = this.meal.foods.map((ele: any) => {
-				return ele.name;
-			}).indexOf(food_name);
+			var index:number;
+			if (this.meal){
+				index = this.meal.foods.map((ele: any) => {
+					return ele.name;
+				}).indexOf(food_name);
+			} else {
+				index = -1;
+			}
+			
 			if (index == -1) {
+				console.log("inserting in index -1");
 				this.food.push(new Icon(food_name, 'food', true, 0));
 			} else {
 				this.food.push(new Icon(food_name, 'food', true, this.meal.foods[index].count));
 			}
 		}
 		for (let drink_name of this.drink_names) {
-			let index = this.meal.drinks.map((ele: any) => {
-				return ele.name;
-			}).indexOf(drink_name);
+			
+			var index:number;
+			if (this.meal){
+				index = this.meal.drinks.map((ele: any) => {
+					return ele.name;
+				}).indexOf(drink_name);
+			} else {
+				index = -1;
+			}
+			
 			if (index == -1) {
 				this.drink.push(new Icon(drink_name, 'drink', true, 0));
 			} else {
@@ -87,14 +124,21 @@ export class MealComponent implements OnInit {
 			}
 		}
 		for (let food_name of this.symptom_names) {
-			let index = this.meal.symptoms.map((ele: any) => {
-				return ele.name;
-			}).indexOf(food_name);
+			var index:number;
+			if (this.meal){
+				index = this.meal.symptoms.map((ele: any) => {
+					return ele.name;
+				}).indexOf(food_name);
+			} else {
+				index = -1;
+			}
+			
 			if (index == -1) {
 				this.symptom.push(new Icon(food_name, 'symptom', true, 0));
 			} else {
 				this.symptom.push(new Icon(food_name, 'symptom', true, this.meal.symptoms[index].count));
 			}
 		}
+		console.log("change foods",this.food,"drinks",this.drink);
 	}
 }

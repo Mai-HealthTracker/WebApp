@@ -30,17 +30,17 @@
         justify-content-around
       "
     >
-      <i class="far fa-minus-square mr-3"></i>
+      <i class="far fa-minus-square mr-3" (click)="updateWater(false)"></i>
       {{ day.water_count }} Cups
-      <i class="far fa-plus-square ml-3"></i>
+      <i class="far fa-plus-square ml-3" (click)="updateWater(true)"></i>
     </div>
   </div>
   <div
     *ngIf="
-      meal == 'breakfast' &&
+      (meal == 'breakfast' &&
       day.breakfast &&
       (day.breakfast.foods || day.breakfast.drinks || day.breakfast.symptoms)
-    "
+      )"
     >
     <app-meal [canEdit]="true" [meal]="day.breakfast" [title]="'BreakFast'" [date]="day.record_id"></app-meal>
   </div>

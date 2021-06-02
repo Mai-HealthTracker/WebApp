@@ -5,7 +5,7 @@
       <div class="d-flex m-sm-4 justify-content-between">
         <input *ngIf="editDate" type="date" name="date" id="chooseDate">        
         <h5 *ngIf="!editDate" class="mt-2"><span class="d-none d-sm-inline-flex">Records for</span> {{date_title}}</h5>
-        <input type="date" class="form-control col-6 col-sm-4" name="date" id="">
+        <input (change)="selectdate()" [(ngModel)]="date" type="date" class="form-control col-6 col-sm-4" name="date">
       </div>
       <div class="list-group mx-3 outer-box pt-4">
         <app-meal-tracker-item *ngFor="let item of records" [day]="item"></app-meal-tracker-item>
@@ -21,5 +21,5 @@
 </div>
 
 <div class="float-btn">
-  <button class="btn btn-primary px-4">Add</button>
+  <button (click)="today()" class="btn btn-primary px-4">Add</button>
 </div>

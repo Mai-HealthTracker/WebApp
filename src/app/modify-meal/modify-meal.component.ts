@@ -43,7 +43,11 @@ export class ModifyMealComponent implements OnInit {
       this.item = items.filter((ele:MealRecords) => {
         return ele.record_id == this.date
       })[0];
-      console.log(this.item);
+      
+      console.log("item",this.item);
+      if (!this.item){
+        this.firebaseService.initializeRecord(this.date);
+      }
     });
   }
 

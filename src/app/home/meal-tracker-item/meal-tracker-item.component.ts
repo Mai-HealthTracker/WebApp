@@ -10,6 +10,8 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class MealTrackerItemComponent implements OnInit {
   @Input() day:MealRecords = new MealRecords();
+  @Input() date:string = "";
+  
   constructor(private firebaseService: FirebaseService) {
   }
 
